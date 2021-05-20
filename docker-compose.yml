@@ -1,0 +1,34 @@
+version: '3'
+services:
+  nginx_web:
+    build:
+      context: ./nginx_web
+      dockerfile: Dockerfile
+    container_name: nginx_web
+    ports:
+    - 80:80
+    volumes:
+    - ./vuetify:/usr/share/nginx/html
+
+  vuetify:
+    build:
+      context: ./vuetify
+      dockerfile: Dockerfile
+    container_name: vuetify
+    ports:
+      - 1234:8080
+    volumes:
+      - ./vuetify:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - 3031:3031
+    volumes:
+    - ./app/src:/src:z
