@@ -4,7 +4,5 @@ import json
 
 app = Flask('test')
 @app.route('/api/v1/get/',methods=['GET'])
-def getShare():
-    with open('./sample.json') as f:
-        d = json.load(f)
-    return jsonify(d),200
+def get():
+    return "this is return from Flask",200

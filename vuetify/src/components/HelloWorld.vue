@@ -10,6 +10,12 @@
         />
       </v-col>
 
+      <v-col cols="12" class="mb-4">
+        <h1 class="display-2 font-weight-bold mb-3">
+          {{flask_message}}
+        </h1>
+      </v-col>
+
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
           Welcome to Vuetify
@@ -92,10 +98,19 @@
 </template>
 
 <script>
+import axios from "axios"
+
   export default {
     name: 'HelloWorld',
 
+    created: function() {
+      axios.get('/api/v1/get')
+      .then(response => {
+        this.flask_message = response.data
+        })
+    },
     data: () => ({
+      flask_message: '',
       ecosystem: [
         {
           text: 'vuetify-loader',
