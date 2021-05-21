@@ -5,4 +5,4 @@ import json
 app = Flask('test')
 @app.route('/api/v1/get/',methods=['GET'])
 def get():
-    return "this is return from Flask",200
+    return "Read Data from Flask",200

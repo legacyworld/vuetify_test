@@ -5,9 +5,7 @@ WORKDIR /app
 COPY ./package*.json ./
 
 RUN apk update
+RUN npm install -g npm
 RUN npm install
-RUN npm install npm
-RUN npm install @vue/cli
-RUN npm install vuetify
 
-CMD ["npm", "run", "build"]
+CMD ["./node_modules/.bin/vue-cli-service", "build", "--watch"]

@@ -31,4 +31,4 @@ services:
     ports:
       - 3031:3031
     volumes:
-    - ./app/src:/src:z
+    - ./app/src:/src
